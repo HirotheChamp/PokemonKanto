@@ -3,26 +3,26 @@
 async function fetchKantoPokemon() {
    await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
    .then(response => response.json())
-   .then (allpokemon => {
+   .then ( allpokemon => {
 
-    allpokemon.results.forEach( pokemon => {
+     return Promise.all(allpokemon.results.forEach( pokemon => {
       fetchPokemonData(pokemon);  
      
-    })
- 
+    }))
+  
    })
       //allows for the pokemon to be displayed in order according to pokedex number 
-   await Promise.all(allpokemon);
+  
 }
 
 //function used to fetch pokemon's data by accessing their url
-function fetchPokemonData(pokemon) {
+async function fetchPokemonData(pokemon) {
     //creating a variable and setting it to the pokemon's url
     let url = pokemon.url;
 
-    fetch(url)
+    await fetch(url)
     .then(response => response.json())
-    .then(function(pokeData) {
+    .then(pokeData => {
        renderPokemon(pokeData)
       
 })
@@ -42,15 +42,15 @@ let pokeNumber = document.createElement('p')
 let pokeName = document.createElement('h4');
 
 
-
-pokeName.innerText = pokeData.name;
+//using functions to change the first letter of the pokemons name to uppercase and add it to the 'sliced' version of the same pokemon name
+pokeName.innerText = pokeData.name.charAt(0).toUpperCase() + pokeData.name.slice(1);
 
 pokeNumber.innerText = `#${pokeData.id}`
 
 createPokemonImage(pokeData.id, pokemonContainer);
 createTypes(pokeData.types, pokeType)
 
-pokemonContainer.append(pokeName. pokeNumber, pokeType);
+pokemonContainer.append(pokeName, pokeNumber, pokeType);
 
 allPokemonContainers.appendChild(pokemonContainer);
 }

@@ -4,6 +4,11 @@ html,body{
 }
 
 
+li {
+    list-style: none;
+    
+}
+
 
 #pokemon-container {
     margin: auto;
