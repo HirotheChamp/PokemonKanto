@@ -5,7 +5,7 @@ async function fetchKantoPokemon() {
    .then(response => response.json())
    .then ( allpokemon => {
 
-     return Promise.all(allpokemon.results.forEach( pokemon => {
+    return Promise.all(allpokemon.results.map( pokemon => {
       fetchPokemonData(pokemon);  
      
     }))
@@ -23,7 +23,7 @@ async function fetchPokemonData(pokemon) {
     await fetch(url)
     .then(response => response.json())
     .then(pokeData => {
-       renderPokemon(pokeData)
+      renderPokemon(pokeData)
       
 })
 
@@ -36,6 +36,7 @@ async function renderPokemon(pokeData) {
 let allPokemonContainers = document.getElementById('pokemon-container');
 //new divs for each seperate pokemon is stored in this variable
 let pokemonContainer = document.createElement('div')
+pokemonContainer.className = 'pokemon-card'
 
 let pokeType = document.createElement('ul')
 let pokeNumber = document.createElement('p')
@@ -66,7 +67,7 @@ function createTypes(types, ul) {
 function createPokemonImage(pokeID, containerDiv) {
     let pokeImgContainer = document.createElement('div')
     let pokeImage = document.createElement('img')
-    pokeImgContainer.classList.add('image')
+ pokeImage.className = 'image'
 
    
     pokeImage.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeID}.png`

@@ -3,10 +3,32 @@ html,body{
     width: 100%;
 }
 
+h1, h4 {
+    text-align: center;
+}
 
-li {
+
+ul {
     list-style: none;
-    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  
+}
+
+p {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}
+
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 
@@ -15,6 +37,14 @@ li {
     width: 90%;
     padding: 10px;
     display: grid;
-    grid-template-columns: 100px 100px 100px 100px;
+    grid-template-columns: 200px 200px 200px 200px;
+    justify-content: center;
+}
+
+.pokemon-card {
+    margin-left: 10px;
+    margin-top: 10px;
+    border: solid;
+
 }
 
