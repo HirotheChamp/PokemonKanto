@@ -14,11 +14,22 @@ h4 {
 
 ul {
     list-style: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  
+  display: flex;
+  flex-direction: column;
+
+    width: 35%;
+  color: white;
+
+}
+
+li {
+   
+    border-radius: 3px;
+    border-top:    2px solid  rgb(141, 141, 141);
+border-right:  2px solid black;
+border-bottom: 2px solid  black;
+border-left:   2px solid  black;
+margin-bottom: 6px;
 }
 
 p {
@@ -42,14 +53,84 @@ p {
     width: 90%;
     padding: 10px;
     display: grid;
-    grid-template-columns: 200px 200px 200px 200px;
+    grid-template-columns: 220px 220px 220px 220px;
     justify-content: center;
+text-align: center;
+
 }
 
 .pokemon-card {
-    margin-left: 10px;
+   
     margin-top: 10px;
     border: solid;
+    height: 242px;
+    width: 197px;
 
 }
 
+
+/* pokemon types */
+
+.grass {
+    background-color: green;
+}
+
+.fire {
+    background-color: orange;
+}
+
+.water {
+    background-color: blue;
+}
+
+.poison {
+    background-color: purple;
+}
+
+.bug {
+    background-color: greenyellow;
+}
+
+.rock {
+    background-color: burlywood;
+}
+
+.ground {
+    background-color: tan;
+}
+
+.flying {
+    background-color: purple;
+}
+
+.normal {
+    background-color: gray;
+}
+
+.electric {
+    background-color: yellow;
+}
+
+.fairy {
+    background-color: pink;
+}
+
+.ghost {
+    background-color: darkcyan;
+}
+
+.dragon {
+    background-color: purple;
+}
+
+.psychic {
+    background-color: pink;
+}
+
+.fighting {
+background-color: brown;
+}
+
+.ice {
+    background-color: aqua;
+}

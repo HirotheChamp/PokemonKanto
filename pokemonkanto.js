@@ -59,7 +59,9 @@ allPokemonContainers.appendChild(pokemonContainer);
 function createTypes(types, ul) {
     types.forEach(function(type) {
         let typeList = document.createElement('li');
+        
         typeList.innerText = type['type']['name'];
+        typeList.className = `${type['type']['name']}`
         ul.append(typeList);
     })
 }
