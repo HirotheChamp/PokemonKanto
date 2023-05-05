@@ -1,14 +1,44 @@
+@font-face {
+    font-family: 'bitFont';
+src: local('bitFont') 
+     url("./Pokemon_Pixel_Font/pokemon_pixel_font.eot");
+src: 
+     url("./Pokemon_Pixel_Font/pokemon_pixel_font.eot?") format("eot"),
+     url("./Pokemon_Pixel_Font/pokemon_pixel_font.ttf") format("truetype"),
+     url("./Pokemon_Pixel_Font/pokemon_pixel_font.woff") format("woff"),
+     local('bitFont') ;
+     /* if you do not add these to values, faux Bold or Faux Italic may occur */
+     font-weight: 500;
+     font-style: normal;
+}
+
 html,body{
     height: 100%;
     width: 100%;
+   background-color: aliceblue; 
+}
+
+.pokemon-title {
+    display: flex;
+    justify-content: center;
+  margin-left: 70px;
+    margin-bottom: 50px;
+}
+
+.pikachu-gif {
+   height: auto;
+   width: 100px;
+   margin-left: 45px;
 }
 
 h1, h4 {
+   
     text-align: center;
 }
 
 h4 {
     margin-top: -5px;
+    font-family:  sans-serif;
 }
 
 
@@ -16,20 +46,27 @@ ul {
     list-style: none;
   display: flex;
   flex-direction: column;
-
-    width: 35%;
-  color: white;
+margin-left: 20px;
+   
+  color: rgb(255, 255, 255);
 
 }
 
 li {
    
+    font-stretch: extra-expanded;
+    font-size: 23px;
+    font-family: 'bitFont', sans-serif;
+width: 55%;
     border-radius: 3px;
     border-top:    2px solid  rgb(141, 141, 141);
 border-right:  2px solid black;
 border-bottom: 2px solid  black;
 border-left:   2px solid  black;
 margin-bottom: 6px;
+
+
+/* -webkit-text-stroke: .5px black; */
 }
 
 p {
@@ -49,6 +86,7 @@ p {
 
 
 #pokemon-container {
+    
     margin: auto;
     width: 90%;
     padding: 10px;
@@ -60,7 +98,7 @@ text-align: center;
 }
 
 .pokemon-card {
-   
+   background-color: rgb(247, 247, 219);
     margin-top: 10px;
     border: solid;
     height: 242px;
@@ -72,65 +110,69 @@ text-align: center;
 /* pokemon types */
 
 .grass {
-    background-color: green;
+    background-color: rgb(100, 201, 100);
 }
 
 .fire {
-    background-color: orange;
+    background-color: rgb(231, 160, 29);
 }
 
 .water {
-    background-color: blue;
+    background-color: rgb(75, 110, 223);
 }
 
 .poison {
-    background-color: purple;
+    background-color: rgb(151, 69, 151);
 }
 
 .bug {
-    background-color: greenyellow;
+    background-color: rgb(189, 214, 121);
 }
 
 .rock {
-    background-color: burlywood;
+    background-color: rgb(179, 165, 91);
 }
 
 .ground {
-    background-color: tan;
+    background-color:rgb(204, 196, 153);;
 }
 
 .flying {
-    background-color: purple;
+    background-color: rgb(201, 167, 255);
 }
 
 .normal {
-    background-color: gray;
+    background-color: rgb(151, 155, 152);
 }
 
 .electric {
-    background-color: yellow;
+    background-color: rgb(211, 214, 36);
 }
 
 .fairy {
-    background-color: pink;
+    background-color: rgb(255, 123, 244);
 }
 
 .ghost {
-    background-color: darkcyan;
+    background-color: rgb(95, 63, 121);
 }
 
 .dragon {
-    background-color: purple;
+    background-color: rgb(92, 41, 175);
 }
 
 .psychic {
-    background-color: pink;
+    background-color: rgb(240, 95, 179);
 }
 
 .fighting {
-background-color: brown;
+background-color: rgb(153, 33, 33);
 }
 
 .ice {
-    background-color: aqua;
+    background-color: rgb(164, 235, 235);
+}
+
+.steel {
+    background-color: rgb(187, 197, 197);
 }
