@@ -44,7 +44,8 @@ pokemonCard.className = 'pokemon-card'
 let pokeType = document.createElement('ul')
 let pokeNumber = document.createElement('p')
 let pokeName = document.createElement('h4');
-let modal = document.getElementById("myModal");
+let modal = document.createElement("pokemon-modal");
+
 
 
 //using functions to change the first letter of the pokemons name to uppercase and add it to the 'sliced' version of the same pokemon name
@@ -55,7 +56,9 @@ pokeNumber.innerText = `#${pokeData.id}`
 createPokemonImage(pokeData.id, pokemonCard);
 createTypes(pokeData.types, pokeType)
 
-pokemonCard.append(pokeName, pokeNumber, pokeType);
+pokemonCard.append(pokeName, pokeNumber, pokeType, modal);
+
+
 
 allPokemonContainers.appendChild(pokemonCard);
 
@@ -65,8 +68,9 @@ allPokemonContainers.appendChild(pokemonCard);
 for (var i = 0; i < pokemonCardsArray.length; i++) {
     pokemonCardsArray[i].addEventListener('click', function onclick() {
         console.log ("hello")
-        pokemonModal()
+    
         modal.style.display = "block";
+        modal.append(pokeName, pokeNumber, pokeType)
     })
 }
   // When the user clicks anywhere outside of the modal, close it
