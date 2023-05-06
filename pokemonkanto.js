@@ -34,13 +34,17 @@ async function fetchPokemonData(pokemon) {
 //fuction using JavaScript to generate elements through data collected from the pokemon API
 async function renderPokemon(pokeData) {
 let allPokemonContainers = document.getElementById('pokemon-container');
+let pokemonCardsArray = []
 //new divs for each seperate pokemon is stored in this variable
-let pokemonContainer = document.createElement('div')
-pokemonContainer.className = 'pokemon-card'
+let pokemonCard = document.createElement('div')
+pokemonCardsArray.push(pokemonCard)
+console.log(pokemonCardsArray)
+pokemonCard.className = 'pokemon-card'
 
 let pokeType = document.createElement('ul')
 let pokeNumber = document.createElement('p')
 let pokeName = document.createElement('h4');
+let modal = document.getElementById("myModal");
 
 
 //using functions to change the first letter of the pokemons name to uppercase and add it to the 'sliced' version of the same pokemon name
@@ -48,12 +52,29 @@ pokeName.innerText = pokeData.name.charAt(0).toUpperCase() + pokeData.name.slice
 
 pokeNumber.innerText = `#${pokeData.id}`
 
-createPokemonImage(pokeData.id, pokemonContainer);
+createPokemonImage(pokeData.id, pokemonCard);
 createTypes(pokeData.types, pokeType)
 
-pokemonContainer.append(pokeName, pokeNumber, pokeType);
+pokemonCard.append(pokeName, pokeNumber, pokeType);
 
-allPokemonContainers.appendChild(pokemonContainer);
+allPokemonContainers.appendChild(pokemonCard);
+
+
+
+//for loop to iterate through every pokemon and create modals whenever the pokemon card is clicked
+for (var i = 0; i < pokemonCardsArray.length; i++) {
+    pokemonCardsArray[i].addEventListener('click', function onclick() {
+        console.log ("hello")
+        pokemonModal()
+        modal.style.display = "block";
+    })
+}
+  // When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+
 }
 
 function createTypes(types, ul) {
@@ -75,7 +96,37 @@ function createPokemonImage(pokeID, containerDiv) {
     pokeImage.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeID}.png`
     containerDiv.append(pokeImage)
     containerDiv.append(pokeImgContainer);
+
 }
+
+
+// Get the modal
+function pokemonModal(pokemon) {
+    
+
+    var span = document.getElementsByClassName("close")[0];
+
+
+    // When the user clicks on the button, open the modal
+
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+
+  
+  }
+}
+
+
+
+
+
+
+
+
 
 
 fetchKantoPokemon()
