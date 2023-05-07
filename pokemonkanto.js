@@ -35,29 +35,41 @@ async function fetchPokemonData(pokemon) {
 async function renderPokemon(pokeData) {
 let allPokemonContainers = document.getElementById('pokemon-container');
 let pokemonCardsArray = []
-//new divs for each seperate pokemon is stored in this variable
-let pokemonCard = document.createElement('div')
-pokemonCardsArray.push(pokemonCard)
-console.log(pokemonCardsArray)
-pokemonCard.className = 'pokemon-card'
+
 
 let pokeType = document.createElement('ul')
 let pokeNumber = document.createElement('p')
 let pokeName = document.createElement('h4');
-let modal = document.createElement("pokemon-modal");
-
-
+let modal = document.createElement("div");
+let modalContent = document.createElement("div")
+let span = document.createElement("span")
+//new divs for each seperate pokemon is stored in this variable
+let pokemonCard = document.createElement('div')
+let pokeNumber2 = pokeNumber.cloneNode(true)
+modal.className = 'pokemon-modal'
+pokemonCard.className = 'pokemon-card'
+modalContent.className = 'modal-content'
+span.className = 'close'
 
 //using functions to change the first letter of the pokemons name to uppercase and add it to the 'sliced' version of the same pokemon name
 pokeName.innerText = pokeData.name.charAt(0).toUpperCase() + pokeData.name.slice(1);
-
+span.innerText = "X"
 pokeNumber.innerText = `#${pokeData.id}`
 
 createPokemonImage(pokeData.id, pokemonCard);
+
 createTypes(pokeData.types, pokeType)
 
-pokemonCard.append(pokeName, pokeNumber, pokeType, modal);
 
+
+pokemonCard.append(pokeName, pokeNumber, pokeType, modal);
+modal.append(
+  // span,
+   modalContent )
+modalContent.append(pokeNumber2)
+
+pokemonCardsArray.push(pokemonCard)
+console.log(pokemonCardsArray)
 
 
 allPokemonContainers.appendChild(pokemonCard);
@@ -66,13 +78,14 @@ allPokemonContainers.appendChild(pokemonCard);
 
 //for loop to iterate through every pokemon and create modals whenever the pokemon card is clicked
 for (var i = 0; i < pokemonCardsArray.length; i++) {
-    pokemonCardsArray[i].addEventListener('click', function onclick() {
-        console.log ("hello")
+    pokemonCardsArray[i].addEventListener('click', function() {
+        console.log (pokeData.id)
     
         modal.style.display = "block";
-        modal.append(pokeName, pokeNumber, pokeType)
-    })
-}
+//         let span = document.getElementsByClassName("close")[0];
+// span.onclick = function() {
+//   modal.style.display = "none";
+// }
   // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
@@ -80,6 +93,12 @@ window.onclick = function(event) {
     }
 
 }
+        
+    })
+   
+}
+
+
 
 function createTypes(types, ul) {
     types.forEach(function(type) {
@@ -104,24 +123,7 @@ function createPokemonImage(pokeID, containerDiv) {
 }
 
 
-// Get the modal
-function pokemonModal(pokemon) {
-    
 
-    var span = document.getElementsByClassName("close")[0];
-
-
-    // When the user clicks on the button, open the modal
-
-  
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-  
-
-  
-  }
 }
 
 
