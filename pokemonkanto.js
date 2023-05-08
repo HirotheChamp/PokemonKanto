@@ -1,15 +1,18 @@
 
 // function created to fetch the pokemon API and use its data
 async function fetchKantoPokemon() {
-   await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-   .then(response => response.json())
-   .then ( allpokemon => {
-
-    return Promise.all(allpokemon.results.map( pokemon => {
-      fetchPokemonData(pokemon);  
-     
-    }))
   
+  fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+   .then(response => response.json())
+  .then ( async allpokemon => {
+
+  let promises = allpokemon.results.map( pokemon => {
+      return fetchPokemonData(pokemon);  
+     
+    })
+    Promise.all(promises).then(response => {
+      console.log(promises)
+    })
    })
       //allows for the pokemon to be displayed in order according to pokedex number 
   
@@ -101,7 +104,7 @@ window.onclick = function(event) {
 
 
 
-function createTypes(types, ul) {
+async function createTypes(types, ul) {
     types.forEach(function(type) {
         let typeList = document.createElement('li');
         
@@ -111,7 +114,7 @@ function createTypes(types, ul) {
     })
 }
 
-function createPokemonImage(pokeID, containerDiv) {
+async function createPokemonImage(pokeID, containerDiv) {
     let pokeImgContainer = document.createElement('div')
     let pokeImage = document.createElement('img')
  pokeImage.className = 'image'
