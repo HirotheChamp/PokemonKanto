@@ -57,7 +57,8 @@ span.innerText = "X"
 pokeNumber.innerText = `#${pokeData.id}`
 
 createPokemonImage(pokeData.id, pokemonCard);
-
+createPokemonImage(pokeData.id, modalContent);
+createPokemonDescription(pokeData.flavor_text, modalContent);
 createTypes(pokeData.types, pokeType)
 
 
@@ -66,7 +67,7 @@ pokemonCard.append(pokeName, pokeNumber, pokeType, modal);
 modal.append(
   // span,
    modalContent )
-modalContent.append(pokeNumber2)
+modalContent.appendChild(pokeName.cloneNode(true))
 
 pokemonCardsArray.push(pokemonCard)
 console.log(pokemonCardsArray)
@@ -119,6 +120,22 @@ function createPokemonImage(pokeID, containerDiv) {
     pokeImage.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeID}.png`
     containerDiv.append(pokeImage)
     containerDiv.append(pokeImgContainer);
+
+}
+
+
+function createPokemonDescription(pokeID, containerDiv) {
+  let pokeDescContainer = document.createElement('div')
+  let pokeDescription = document.createElement('p')
+pokeDescription.className = 'pokemon-description'
+
+
+// pokeDescription.innerText = pokeID['flavor_text']
+
+ 
+  // pokeDescription.srcset = `https://pokeapi.co/api/v2/pokemon/${pokeID}`
+  containerDiv.append(pokeDescription)
+  containerDiv.append(pokeDescContainer);
 
 }
 
